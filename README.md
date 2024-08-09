@@ -1,16 +1,8 @@
-# tiktok_clone
 
-A new Flutter project.
+## Font awesome
 
-## Getting Started
+### 10.3.0 설치하기 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- `pubspec.yaml` 의 dependencies 에서 `font_aesome_flutter: 10.3.0` 추가 후 저장하면 자동으로 패키지를 설치함
+- 혹은 get package 버튼을 누른다.
+- 설치하면 디버그 세션을 재시작한다.
