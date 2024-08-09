@@ -16,14 +16,14 @@ class AuthButton extends StatelessWidget {
         decoration: BoxDecoration(
             border:
                 Border.all(color: Colors.grey.shade300, width: Sizes.size1)),
-        child: Stack(
-          alignment: Alignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Align(
               alignment:  Alignment.centerLeft,
               child: icon
             ),
-            Expanded( //  Expanded 를 쓰면 텍스트를 중앙정렬한 상태로 아이콘을 왼쪽으로 밀어낸다 (아이콘 사이즈를 차지 않게 하기 위해 Stack 으로 감싸줘야 함)
+            Expanded( //  Expanded 를 쓰면 텍스트를 중앙정렬한 상태로 아이콘을 왼쪽으로 밀어낸다 
               child: Text(
               text,
               textAlign: TextAlign.center,
