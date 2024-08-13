@@ -33,6 +33,9 @@ class TikTokApp extends StatelessWidget {
           bottomAppBarTheme: const BottomAppBarTheme(
             color: Colors.white,
             surfaceTintColor: Colors.white,
+            elevation: 3,
+            shadowColor: Colors.black,
+
           )
       ),
       home: const InterestsScreen(),
