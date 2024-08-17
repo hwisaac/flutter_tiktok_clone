@@ -93,6 +93,7 @@ class _VideoPostState extends State<VideoPost>
 
     await showModalBottomSheet(
       context: context,
+      isScrollControlled: true, // 사이즈를 변경할 수 있음
       builder: (context) => VideoComments(),
     );
     _onTogglePause();
