@@ -6,6 +6,7 @@ class VideoTimelineScreen extends StatefulWidget {
   @override
   State<VideoTimelineScreen> createState() => _VideoTimelineScreenState();
 }
+
 class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
   int _itemCount = 4;
 
@@ -27,6 +28,7 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
   }
 
   void _onVideoFinished() {
+    return;
     _pageController.nextPage(
       duration: _scrollDuration,
       curve: _scrollCurve,
