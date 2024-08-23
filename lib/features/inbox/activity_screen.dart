@@ -70,7 +70,10 @@ class _ActivityScreenState extends State<ActivityScreen>
       appBar: AppBar(
         title: GestureDetector(
           onTap: _toggleAnimations,
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
             Text("All activity"),
             Gaps.h2,
             RotationTransition(
@@ -80,7 +83,8 @@ class _ActivityScreenState extends State<ActivityScreen>
                 size: Sizes.size14,
               ),
             )
-          ]),
+            ],
+          ),
         ),
       ),
       body: Stack(
