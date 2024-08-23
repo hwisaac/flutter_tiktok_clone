@@ -23,8 +23,10 @@ class _ActivityScreenState extends State<ActivityScreen>
     {"title": "From Tiktok", "icon": FontAwesomeIcons.tiktok},
   ];
 
-  late final AnimationController _animationController =
-      AnimationController(vsync: this, duration: Duration(milliseconds: 200));
+  bool _showBarrier = false;
+
+  late final AnimationController _animationController = AnimationController(
+      vsync: this, duration: const Duration(milliseconds: 200));
 
   late final Animation<double> _arrowAnimation = Tween(
     begin: 0.0,
@@ -32,8 +34,13 @@ class _ActivityScreenState extends State<ActivityScreen>
   ).animate(_animationController);
 
   late final Animation<Offset> _panelAnimation = Tween(
-    begin: Offset(0, -1.0),
+    begin: const Offset(0, -1.0),
     end: Offset.zero,
+  ).animate(_animationController);
+
+  late final Animation<Color?> _barrierAnimation = ColorTween(
+    begin: const Color.fromRGBO(0, 0, 0, 0),
+    end: Colors.black38,
   ).animate(_animationController);
 
   void _onDismissed(String notification) {
@@ -41,12 +48,15 @@ class _ActivityScreenState extends State<ActivityScreen>
     setState(() {});
   }
 
-  void _onTitleTap() {
+  void _toggleAnimations() async {
     if (_animationController.isCompleted) {
-      _animationController.reverse();
+      await _animationController.reverse();
     } else {
       _animationController.forward(); // 애니메이션 플레이
     }
+    setState(() {
+      _showBarrier = !_showBarrier;
+    });
   }
 
   @override
@@ -59,7 +69,7 @@ class _ActivityScreenState extends State<ActivityScreen>
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(
-          onTap: _onTitleTap,
+          onTap: _toggleAnimations,
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text("All activity"),
             Gaps.h2,
@@ -177,6 +187,12 @@ class _ActivityScreenState extends State<ActivityScreen>
                 ),
             ],
           ),
+          if (_showBarrier)
+            AnimatedModalBarrier(
+              color: _barrierAnimation,
+              dismissible: true,
+              onDismiss: _toggleAnimations,
+            ),
           SlideTransition(
             position: _panelAnimation,
             child: Container(
