@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_clone/constants/sizes.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});
@@ -13,6 +14,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
+          pinned: true,
           backgroundColor: Colors.teal,
           collapsedHeight: 80,
           expandedHeight: 200,
@@ -39,7 +41,25 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 ),
               ),
             ),
-            itemExtent: 100)
+            itemExtent: 100),
+        SliverGrid(
+          delegate: SliverChildBuilderDelegate(
+            childCount: 100,
+            (context, index) => Container(
+              color: Colors.teal[100 * (index % 9)],
+              child: Align(
+                child: Text("Item $index"),
+                alignment: Alignment.center,
+              ),
+            ),
+          ),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 100,
+            mainAxisSpacing: Sizes.size20,
+            crossAxisSpacing: Sizes.size20,
+            childAspectRatio: 1,
+          ),
+        ),
       ],
     );
   }
