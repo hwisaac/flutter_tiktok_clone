@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/features/settings/settings_screen.dart';
 import 'package:tiktok_clone/features/users/widgets/persistent_tab_bar.dart';
 
 class UserProfileScreen extends StatefulWidget {
@@ -12,6 +13,14 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  void _onGearPressed() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const SettingsScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,7 +33,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 title: const Text("hwisaac"),
                 actions: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: _onGearPressed,
                     icon: const FaIcon(
                       FontAwesomeIcons.gear,
                       size: Sizes.size20,
@@ -192,7 +201,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ],
                     ),
                     Gaps.v20,
-                    
                   ],
                 ),
               ),
@@ -200,7 +208,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 pinned: true,
                 delegate: PersistentTabBar(),
               ),
-    
             ];
           },
           body: TabBarView(
@@ -228,7 +235,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             "https://plus.unsplash.com/premium_photo-1661603403807-aa68bfcc983a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       ),
                     ),
-                    
                   ],
                 ),
               ),
