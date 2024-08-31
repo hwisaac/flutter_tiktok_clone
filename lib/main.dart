@@ -50,7 +50,7 @@ class TikTokApp extends StatelessWidget {
             elevation: 3,
             shadowColor: Colors.black,
           )),
-      home: LayoutBuilderCodeLab(),
+      home: MainNavigationScreen(),
     );
   }
 }
