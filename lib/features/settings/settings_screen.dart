@@ -111,7 +111,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 );
               },
             ),
-            
             const AboutListTile(),
           ],
         ));

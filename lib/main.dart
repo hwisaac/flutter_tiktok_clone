@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
-import 'package:tiktok_clone/features/inbox/activity_screen.dart';
-import 'package:tiktok_clone/features/inbox/chat_detail_screen.dart';
-import 'package:tiktok_clone/features/inbox/inbox_screen.dart';
 import 'package:tiktok_clone/features/main_navigation/main_navigation_screen.dart';
+import 'package:tiktok_clone/features/settings/settings_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +23,9 @@ class TikTokApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TikTok Clone',
+      themeMode: ThemeMode.system,
       theme: ThemeData(
+        brightness: Brightness.light,
           scaffoldBackgroundColor: Colors.white,
           primaryColor: const Color(0xFFE9435A),
           textSelectionTheme: const TextSelectionThemeData(
@@ -44,13 +45,28 @@ class TikTokApp extends StatelessWidget {
           ),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-          bottomAppBarTheme: const BottomAppBarTheme(
-            color: Colors.white,
+        bottomAppBarTheme: BottomAppBarTheme(
+          color: Colors.grey.shade50,
             surfaceTintColor: Colors.white,
             elevation: 3,
             shadowColor: Colors.black,
-          )),
-      home: MainNavigationScreen(),
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        primaryColor: const Color(0xFFE9435A),
+      ),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale("en"),
+        Locale("ko"),
+      ],
+      home: SignUpScreen(),
     );
   }
 }
