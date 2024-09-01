@@ -19,6 +19,38 @@
 또는 pubspec.yaml 에서 dependencies 에 추가
 
 
+## translation
+
+pubspec.yaml
+```yaml
+flutter:
+  generate: true
+```
+
+l10n.yaml
+```
+arb-dir: lib/intl
+template-arb-file: intl_en.arb
+output-localization-file: intl_generated.dart
+```
+
+lib/intl/intl_en.arb
+```arb
+{
+  "signUpTitle" : "Sign up for Tiktok"
+}
+```
+
+lib/intl/intl_ko.arb
+```
+{
+  "signUpTitle": "Tiktok에 가입하세요"
+}
+```
+
+- 키는 동일 해야 한다.
+
+- `flutter gen-l10n` 터미널에 입력
 
 # 에러
 
