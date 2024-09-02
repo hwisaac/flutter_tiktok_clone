@@ -9,6 +9,7 @@ import 'package:tiktok_clone/utils.dart';
 import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 class SignUpScreen extends StatelessWidget {
+  static String routeName = '/';
   const SignUpScreen({super.key});
   void _onLoginTab(BuildContext context) async {
     final result = await Navigator.of(context)
@@ -17,16 +18,17 @@ class SignUpScreen extends StatelessWidget {
   }
 
   void _onEmailTap(BuildContext context) {
-    Navigator.of(context)
-        .push(PageRouteBuilder(
-        transitionDuration: const Duration(seconds: 1),
-        reverseTransitionDuration: const Duration(seconds: 1),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-            ScaleTransition(
-                scale: animation,
-                child: FadeTransition(opacity: animation, child: child)),
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            const UsernameScreen()));
+    // Navigator.of(context)
+    //     .push(PageRouteBuilder(
+    //     transitionDuration: const Duration(seconds: 1),
+    //     reverseTransitionDuration: const Duration(seconds: 1),
+    //     transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+    //         ScaleTransition(
+    //             scale: animation,
+    //             child: FadeTransition(opacity: animation, child: child)),
+    //     pageBuilder: (context, animation, secondaryAnimation) =>
+    //         const UsernameScreen()));
+    Navigator.of(context).pushNamed(UsernameScreen.routeName);
   }
 
   @override
