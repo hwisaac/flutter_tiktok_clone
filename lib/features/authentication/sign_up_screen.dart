@@ -10,9 +10,10 @@ import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
-  void _onLoginTab(BuildContext context) {
-    Navigator.of(context)
+  void _onLoginTab(BuildContext context) async {
+    final result = await Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => LoginScreen()));
+    print(result);
   }
 
   void _onEmailTap(BuildContext context) {
