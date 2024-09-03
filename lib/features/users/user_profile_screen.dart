@@ -6,7 +6,11 @@ import 'package:tiktok_clone/features/settings/settings_screen.dart';
 import 'package:tiktok_clone/features/users/widgets/persistent_tab_bar.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({super.key});
+  final String username;
+  const UserProfileScreen({
+    super.key,
+    required this.username,
+  });
 
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
@@ -30,7 +34,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               SliverAppBar(
-                title: const Text("hwisaac"),
+                title: Text(widget.username),
                 actions: [
                   IconButton(
                     onPressed: _onGearPressed,
@@ -44,23 +48,23 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 50,
                       backgroundColor: Colors.teal,
-                      foregroundImage: NetworkImage(
+                      foregroundImage: const NetworkImage(
                           "https://avatars.githubusercontent.com/u/54179672?v=4"),
                       child: Text(
-                        "hwisaac",
-                        style: TextStyle(color: Colors.white),
+                        widget.username,
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ),
                     Gaps.v20,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          "@hwisaac",
-                          style: TextStyle(
+                        Text(
+                          "@${widget.username}",
+                          style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: Sizes.size16,
                           ),

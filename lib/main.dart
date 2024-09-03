@@ -9,6 +9,7 @@ import 'package:tiktok_clone/features/authentication/username_screen.dart';
 import 'package:tiktok_clone/features/main_navigation/main_navigation_screen.dart';
 import 'package:tiktok_clone/features/settings/settings_screen.dart';
 import 'package:flutter_gen/gen_l10n/intl_generated.dart';
+import 'package:tiktok_clone/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,8 @@ class TikTokApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
       title: 'TikTok Clone',
       themeMode: ThemeMode.system,
@@ -64,13 +66,7 @@ class TikTokApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       // home: SignUpScreen(),
-      initialRoute: '/',
-      routes: {
-        SignUpScreen.routeName: (context) => const SignUpScreen(),
-        UsernameScreen.routeName: (context) => const UsernameScreen(),
-        LoginScreen.routeName: (context) => const LoginScreen(),
-        EmailScreen.routeName: (context) => const EmailScreen()
-      },
+      
     );
   }
 }
