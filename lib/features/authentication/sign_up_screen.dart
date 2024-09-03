@@ -28,6 +28,7 @@ class SignUpScreen extends StatelessWidget {
     //     pageBuilder: (context, animation, secondaryAnimation) =>
     //         const UsernameScreen()));
     context.push(UsernameScreen.routeName);
+    
   }
 
   @override
