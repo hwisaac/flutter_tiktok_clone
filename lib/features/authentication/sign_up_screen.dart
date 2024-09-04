@@ -10,7 +10,8 @@ import 'package:tiktok_clone/utils.dart';
 import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 class SignUpScreen extends StatelessWidget {
-  static String routeName = '/';
+  static const routeURL = '/';
+  static const routeName = '/signUp';
   const SignUpScreen({super.key});
   void _onLoginTab(BuildContext context) async {
     context.push(LoginScreen.routeName);
@@ -27,8 +28,7 @@ class SignUpScreen extends StatelessWidget {
     //             child: FadeTransition(opacity: animation, child: child)),
     //     pageBuilder: (context, animation, secondaryAnimation) =>
     //         const UsernameScreen()));
-    context.push(UsernameScreen.routeName);
-    
+    context.pushNamed(UsernameScreen.routeName);
   }
 
   @override
