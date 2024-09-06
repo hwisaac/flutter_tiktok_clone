@@ -36,6 +36,7 @@ dependencies:
   visibility_detector: 0.3.3
   go_router: 6.0.2
   intl: any
+  gallery_saver: 2.3.2
   flutter_localizations:
     sdk: flutter
 
