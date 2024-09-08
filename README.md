@@ -55,6 +55,9 @@ lib/intl/intl_ko.arb
 ## 패키지
 - flutter pub add camera 카메라 사용 패키지
 - flutter pub add permission_handler 권한 요청하기 패키지
+- imagge_picker 라이브러리에서 동영상/이미지 가져오기
+
+
 # 에러
 
 Stack 자식으로 Expanded 위젯 쓸 수 없다!
