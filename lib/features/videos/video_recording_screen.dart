@@ -15,7 +15,7 @@ class VideoRecordingScreen extends StatefulWidget {
 }
 
 class _VideoRecordingScreenState extends State<VideoRecordingScreen>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   bool _hasPermission = false;
   bool _isSelfieMode = false;
 
@@ -51,6 +51,7 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
     await _cameraController.prepareForVideoRecording(); // for iOS (싱크 맞추기)
 
     _flashMode = _cameraController.value.flashMode;
+    setState(() {});
   }
 
   Future<void> initPermissions() async {
@@ -62,12 +63,8 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
     final micDenied =
         micPermission.isDenied || micPermission.isPermanentlyDenied;
 
-    print(
-        " cameraDenied=${cameraDenied} , micDenied=${micDenied} ---------------");
-
     if (!cameraDenied && !micDenied) {
       _hasPermission = true;
-      print(" ${_hasPermission} hasPermission----------------------");
       await initCamera();
       setState(() {});
     }
@@ -121,8 +118,8 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-
     initPermissions();
+    WidgetsBinding.instance.addObserver(this);
     _progressAnimationController.addListener(() {
       setState(() {});
     });
@@ -139,6 +136,18 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
     _buttonAnimationController.dispose();
     _cameraController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (!_hasPermission) return;
+    if (!_cameraController.value.isInitialized) return;
+
+    if (state == AppLifecycleState.inactive) {
+      _cameraController.dispose();
+    } else if (state == AppLifecycleState.resumed) {
+      initCamera();
+    }
   }
 
   Future<void> _onPickVideoPressed() async {
