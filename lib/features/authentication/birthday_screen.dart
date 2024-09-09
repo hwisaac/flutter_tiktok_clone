@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/email_screen.dart';
@@ -16,7 +17,7 @@ class BirthdayScreen extends StatefulWidget {
 class _BirthdayScreenState extends State<BirthdayScreen> {
   final TextEditingController _birthdayController = TextEditingController();
 
-  DateTime initialDate= DateTime.now();
+  DateTime initialDate = DateTime.now();
 
   @override
   void initState() {
@@ -31,13 +32,8 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   }
 
   void _onNextTap() {
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => const InterestsScreen(),
-      ),
-      (route) {
-        return false;
-      },
+    // 뒤로가기 못하게 replacement 로
+    context.pushReplacementNamed(InterestsScreen.routeName
     );
   }
 
@@ -98,10 +94,10 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
       ),
       bottomNavigationBar: BottomAppBar(
         height: 300,
-          child: CupertinoDatePicker(
-            mode: CupertinoDatePickerMode.date,
-            onDateTimeChanged: _setTextFieldDate,
-            ),
+        child: CupertinoDatePicker(
+          mode: CupertinoDatePickerMode.date,
+          onDateTimeChanged: _setTextFieldDate,
+        ),
       ),
     );
   }

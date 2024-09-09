@@ -14,21 +14,14 @@ class SignUpScreen extends StatelessWidget {
   static const routeName = '/signUp';
   const SignUpScreen({super.key});
   void _onLoginTab(BuildContext context) async {
-    context.push(LoginScreen.routeName);
+    
+    context.pushNamed(LoginScreen.routeName);
   }
 
   void _onEmailTap(BuildContext context) {
-    // Navigator.of(context)
-    //     .push(PageRouteBuilder(
-    //     transitionDuration: const Duration(seconds: 1),
-    //     reverseTransitionDuration: const Duration(seconds: 1),
-    //     transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-    //         ScaleTransition(
-    //             scale: animation,
-    //             child: FadeTransition(opacity: animation, child: child)),
-    //     pageBuilder: (context, animation, secondaryAnimation) =>
-    //         const UsernameScreen()));
-    context.pushNamed(UsernameScreen.routeName);
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => UsernameScreen()));
+    
   }
 
   @override

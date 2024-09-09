@@ -56,6 +56,9 @@ const interests = [
 ];
 
 class InterestsScreen extends StatefulWidget {
+  static const String routeName = 'interests';
+  static const String routeURL = '/tutorial';
+
   const InterestsScreen({super.key});
 
   @override
