@@ -44,24 +44,39 @@ final router = GoRouter(
       builder: (context, state) => const ActivityScreen(),
     ),
     GoRoute(
-        name: ChatsScreen.routeName,
-        path: ChatsScreen.routeURL,
-        builder: (context, state) => const ChatsScreen(),
-        routes: [
-          GoRoute(
-            path: ChatDetailScreen.routeURL,
-            name: ChatDetailScreen.routeName,
-            builder: (context, state) {
-              final chatId = state.params['chatId']!;
-              return ChatDetailScreen(chatId: chatId);
-            },
-          ),
+      name: ChatsScreen.routeName,
+      path: ChatsScreen.routeURL,
+      builder: (context, state) => const ChatsScreen(),
+      routes: [
+        GoRoute(
+          path: ChatDetailScreen.routeURL,
+          name: ChatDetailScreen.routeName,
+          builder: (context, state) {
+            final chatId = state.params['chatId']!;
+            return ChatDetailScreen(chatId: chatId);
+          },
+        ),
       ],
     ),
     GoRoute(
-      name: VideoRecordingScreen.routeName,
-      path: VideoRecordingScreen.routeURL,
-      builder: (context, state) => const VideoRecordingScreen(),
-    ),
+        name: VideoRecordingScreen.routeName,
+        path: VideoRecordingScreen.routeURL,
+        pageBuilder: (context, state) => CustomTransitionPage(
+            transitionDuration: Duration(
+              milliseconds: 100,
+            ),
+            child: VideoRecordingScreen(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              final position = Tween(
+                begin: Offset(0, 1),
+                end: Offset.zero,
+              ).animate(animation);
+
+              return SlideTransition(
+                position: position,
+                child: child,
+              );
+            })),
   ],
 );
