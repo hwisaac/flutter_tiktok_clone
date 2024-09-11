@@ -11,6 +11,8 @@ import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/videos/video_preview_screen.dart';
 
 class VideoRecordingScreen extends StatefulWidget {
+  static const String routeName = 'postVideo';
+  static const String routeURL = '/upload';
   const VideoRecordingScreen({super.key});
 
   @override
@@ -211,56 +213,56 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
                           children: [
                             IconButton(
                               icon: const Icon(
-                              Icons.cameraswitch,
+                                Icons.cameraswitch,
+                              ),
+                              color: Colors.white,
+                              onPressed: _toggleSelfieMode,
                             ),
-                            color: Colors.white,
-                            onPressed: _toggleSelfieMode,
-                          ),
-                          Gaps.v10,
-                          IconButton(
-                            icon: const Icon(
-                              Icons.flash_off_rounded,
+                            Gaps.v10,
+                            IconButton(
+                              icon: const Icon(
+                                Icons.flash_off_rounded,
+                              ),
+                              color: _flashMode == FlashMode.off
+                                  ? Colors.amber.shade200
+                                  : Colors.white,
+                              onPressed: () => _setFlashMode(FlashMode.off),
                             ),
-                            color: _flashMode == FlashMode.off
-                                ? Colors.amber.shade200
-                                : Colors.white,
-                            onPressed: () => _setFlashMode(FlashMode.off),
-                          ),
-                          Gaps.v10,
-                          IconButton(
-                            icon: const Icon(
-                              Icons.flash_on_rounded,
+                            Gaps.v10,
+                            IconButton(
+                              icon: const Icon(
+                                Icons.flash_on_rounded,
+                              ),
+                              color: _flashMode == FlashMode.always
+                                  ? Colors.amber.shade200
+                                  : Colors.white,
+                              onPressed: () => _setFlashMode(FlashMode.always),
                             ),
-                            color: _flashMode == FlashMode.always
-                                ? Colors.amber.shade200
-                                : Colors.white,
-                            onPressed: () => _setFlashMode(FlashMode.always),
-                          ),
-                          Gaps.v10,
-                          IconButton(
-                            icon: const Icon(
-                              Icons.flash_auto_rounded,
+                            Gaps.v10,
+                            IconButton(
+                              icon: const Icon(
+                                Icons.flash_auto_rounded,
+                              ),
+                              color: _flashMode == FlashMode.auto
+                                  ? Colors.amber.shade200
+                                  : Colors.white,
+                              onPressed: () => _setFlashMode(FlashMode.auto),
                             ),
-                            color: _flashMode == FlashMode.auto
-                                ? Colors.amber.shade200
-                                : Colors.white,
-                            onPressed: () => _setFlashMode(FlashMode.auto),
-                          ),
-                          Gaps.v10,
-                          IconButton(
-                            icon: const Icon(
-                              Icons.flashlight_on_rounded,
-                            ),
-                            color: _flashMode == FlashMode.torch
-                                ? Colors.amber.shade200
-                                : Colors.white,
+                            Gaps.v10,
+                            IconButton(
+                              icon: const Icon(
+                                Icons.flashlight_on_rounded,
+                              ),
+                              color: _flashMode == FlashMode.torch
+                                  ? Colors.amber.shade200
+                                  : Colors.white,
                               onPressed: () => _setFlashMode(
                                 FlashMode.torch,
                               ),
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
                     Positioned(
                       bottom: Sizes.size40,
                       width: MediaQuery.of(context).size.width,

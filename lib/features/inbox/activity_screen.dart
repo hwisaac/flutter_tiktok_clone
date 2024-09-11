@@ -4,6 +4,8 @@ import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
 class ActivityScreen extends StatefulWidget {
+  static const String routeName = 'activity';
+  static const String routeURL = '/activity';
   const ActivityScreen({super.key});
 
   @override
@@ -74,15 +76,15 @@ class _ActivityScreenState extends State<ActivityScreen>
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            Text("All activity"),
-            Gaps.h2,
-            RotationTransition(
-              turns: _arrowAnimation,
-              child: const FaIcon(
-                FontAwesomeIcons.chevronDown,
-                size: Sizes.size14,
-              ),
-            )
+              Text("All activity"),
+              Gaps.h2,
+              RotationTransition(
+                turns: _arrowAnimation,
+                child: const FaIcon(
+                  FontAwesomeIcons.chevronDown,
+                  size: Sizes.size14,
+                ),
+              )
             ],
           ),
         ),
