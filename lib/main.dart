@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tiktok_clone/common/widgets/main_navigation/widgets/video_config/video_config.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 import 'package:tiktok_clone/router.dart';
@@ -18,48 +19,50 @@ class TikTokApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
-      title: 'TikTok Clone',
-      themeMode: ThemeMode.system,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: Colors.white,
-        primaryColor: const Color(0xFFE9435A),
-        textSelectionTheme: const TextSelectionThemeData(
-          cursorColor: Color(0xFFE9435A),
-          selectionColor: Color(0xFFE9435A),
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-          foregroundColor: Colors.black,
-          titleTextStyle: const TextStyle(
-            color: Colors.black,
-            fontSize: Sizes.size20,
-            fontWeight: FontWeight.w600,
+    return VideoConfig(
+      child: MaterialApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        title: 'TikTok Clone',
+        themeMode: ThemeMode.system,
+        theme: ThemeData(
+          brightness: Brightness.light,
+          scaffoldBackgroundColor: Colors.white,
+          primaryColor: const Color(0xFFE9435A),
+          textSelectionTheme: const TextSelectionThemeData(
+            cursorColor: Color(0xFFE9435A),
+            selectionColor: Color(0xFFE9435A),
           ),
-          shadowColor: Colors.grey.shade50,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+            foregroundColor: Colors.black,
+            titleTextStyle: const TextStyle(
+              color: Colors.black,
+              fontSize: Sizes.size20,
+              fontWeight: FontWeight.w600,
+            ),
+            shadowColor: Colors.grey.shade50,
+          ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          bottomAppBarTheme: BottomAppBarTheme(
+            color: Colors.grey.shade50,
+            surfaceTintColor: Colors.white,
+            elevation: 3,
+            shadowColor: Colors.black,
+          ),
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        bottomAppBarTheme: BottomAppBarTheme(
-          color: Colors.grey.shade50,
-          surfaceTintColor: Colors.white,
-          elevation: 3,
-          shadowColor: Colors.black,
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Colors.black,
+          primaryColor: const Color(0xFFE9435A),
         ),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        // home: SignUpScreen(),
+        
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.black,
-        primaryColor: const Color(0xFFE9435A),
-      ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      // home: SignUpScreen(),
-      
     );
   }
 }
