@@ -1,3 +1,8 @@
+## 실행하기
+
+```
+flutter run
+```
 
 ## Font awesome
 
